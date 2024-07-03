@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segnapunti Partita di Basket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #FF9800; /* Cambia il colore di sfondo della pagina */
+        }
+        .scoreboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff; /* Cambia il colore di sfondo della scheda segnapunti */
+            border: 4px solid #333; /* Cambia il colore del bordo */
+            border-radius: 20px;
+            padding: 40px; /* Cambiato a 40px */
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Cambiato a 20px */
+        }
+        .team {
+            margin-bottom: 40px; /* Cambiato a 40px */
+        }
+        .team h2 {
+            font-size: 72px; /* Cambiato a 72px */
+            margin: 0;
+            color: #000; /* Cambia il colore del punteggio */
+        }
+.team-name {
+    font-family: 'Poetsen One', cursive;
+    font-size: 48px; /* Cambiato a 48px */
+    margin-top: 20px; /* Cambiato a 20px */
+    color: #555; /* Cambia il colore del nome della squadra */
+        }
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px; /* Cambiato a 20px */
+        }
+        button {
+            font-size: 32px; /* Cambiato a 32px */
+            padding: 20px 40px; /* Cambiato a 20px 40px */
+            margin: 10px; /* Cambiato a 10px */
+            border: none;
+            border-radius: 10px; /* Cambiato a 10px */
+            cursor: pointer;
+            color: white; /* Cambia il colore del testo dei pulsanti */
+        }
+        .increase-1 {
+            background-color: #FF9800; /* Cambia il colore di sfondo del pulsante +1 */
+        }
+        .increase-2 {
+            background-color: #FF9800; /* Cambia il colore di sfondo del pulsante +2 */
+        }
+        .increase-3 {
+            background-color: #FF9800; /* Cambia il colore di sfondo del pulsante +3 */
+        }
+        .decrease {
+            background-color: #FF9800; /* Cambia il colore di sfondo del pulsante -1 */
+        }
+        .reset {
+            background-color: #000; /* Cambia il colore di sfondo del pulsante reset */
+            color: white; /* Cambia il colore del testo del pulsante reset */
+        }
+    </style>
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+<body>
+    <div class="scoreboard">
+        <div class="team">
+            <div class="team-name">Riccardo</div>
+            <h2 id="score1">0</h2>
+            <div class="buttons">
+                <button class="increase-1" onclick="increaseScore('score1', 1)">+1</button>
+                <button class="increase-2" onclick="increaseScore('score1', 2)">+2</button>
+                <button class="increase-3" onclick="increaseScore('score1', 3)">+3</button>
+                <button class="decrease" onclick="decreaseScore('score1')">-1</button>
+            </div>
+        </div>
+        <div class="team">
+            <div class="team-name">Federico</div>
+            <h2 id="score2">0</h2>
+            <div class="buttons">
+                <button class="increase-1" onclick="increaseScore('score2', 1)">+1</button>
+                <button class="increase-2" onclick="increaseScore('score2', 2)">+2</button>
+                <button class="increase-3" onclick="increaseScore('score2', 3)">+3</button>
+                <button class="decrease" onclick="decreaseScore('score2')">-1</button>
+            </div>
+        </div>
+        <button class="reset" onclick="resetScores()">Reset Punteggi</button>
+    </div>
+    <script>
+        function increaseScore(teamId, points) {
+            const scoreElement = document.getElementById(teamId);
+            let score = parseInt(scoreElement.textContent);
+            score += points;
+            scoreElement.textContent = score;
+        }
+
+        function decreaseScore(teamId) {
+            const scoreElement = document.getElementById(teamId);
+            let score = parseInt(scoreElement.textContent);
+            if (score > 0) {
+                score -= 1;
+                scoreElement.textContent = score;
+            }
+        }
+
+        function resetScores() {
+            document.getElementById('score1').textContent = '0';
+            document.getElementById('score2').textContent = '0';
+        }
+    </script>
+</body>
+</html>
